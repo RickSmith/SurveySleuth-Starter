@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% seo %}
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+</head>
+<body>
+{% assign u = page.url %}
+<div class="wrap">
+<nav class="side">
+  <a class="brand" href="{{ '/' | relative_url }}">SurveySleuth <span>Starter</span></a>
+  <p class="tag">{{ site.description }}</p>
+  <a class="nav-link{% if u == '/' or u == '/index.html' %} on{% endif %}" href="{{ '/' | relative_url }}">Home</a>
+  <div class="nav-group">Set it up</div>
+  <a class="nav-step{% if u == '/1-setup.html' %} on{% endif %}" href="{{ '/1-setup.html' | relative_url }}"><b>1</b> Set up your computer</a>
+  <a class="nav-step{% if u == '/2-get-the-code.html' %} on{% endif %}" href="{{ '/2-get-the-code.html' | relative_url }}"><b>2</b> Get the code</a>
+  <a class="nav-step{% if u == '/3-your-data.html' %} on{% endif %}" href="{{ '/3-your-data.html' | relative_url }}"><b>3</b> Get your data ready</a>
+  <a class="nav-step{% if u == '/4-hand-it-to-your-agent.html' %} on{% endif %}" href="{{ '/4-hand-it-to-your-agent.html' | relative_url }}"><b>4</b> Hand it to your agent</a>
+  <a class="nav-step{% if u == '/5-every-day.html' %} on{% endif %}" href="{{ '/5-every-day.html' | relative_url }}"><b>5</b> Every day</a>
+  <div class="nav-group">More</div>
+  <a class="nav-link{% if u == '/wizard.html' %} on{% endif %}" href="{{ '/wizard.html' | relative_url }}">The wizard prompt</a>
+  <a class="nav-link{% if u == '/reference.html' %} on{% endif %}" href="{{ '/reference.html' | relative_url }}">Technical reference</a>
+  <a class="nav-link" href="https://github.com/RickSmith/SurveySleuth-Starter">The code on GitHub</a>
+</nav>
+<main class="content">
+{{ content }}
+</main>
+</div>
+<script>
+document.querySelectorAll('pre').forEach(function (pre) {
+  var b = document.createElement('button');
+  b.className = 'copy'; b.type = 'button'; b.textContent = 'Copy';
+  b.onclick = function () {
+    navigator.clipboard.writeText(pre.innerText.replace(/Copy$|Copied$/, '').trim()).then(function () {
+      b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1500);
+    });
+  };
+  pre.appendChild(b);
+});
+</script>
+</body>
+</html>

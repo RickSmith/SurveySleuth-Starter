@@ -14,7 +14,7 @@ not a programmer. Take the steps below in order, one at a time.
 - The archive is read-only: the code never writes into it, and neither do you. `Data/`, `index/`, `testset/`, `tiles/`
   and `*.zip` are gitignored; keep them so. An API key lives in an environment variable, never in a file in git.
 - A step that changed code ends with `python -m unittest` passing and a commit whose one-line message names the step.
-- `README.md` (the Reference section) is the command reference. `docs/3-your-data.md` lists every Galveston County
+- `docs/reference.md` is the command reference. `docs/3-your-data.md` lists every Galveston County
   value in the code, and the test set's shape. `docs/1-setup.md` has the install command for each program.
 
 ## Steps
@@ -118,6 +118,9 @@ Done when the check passes on the full index and the app runs from the offline t
 
 ### 11. Hand over
 
-Write into OFFICE.md the exact command that starts the app on this computer (with its `--index`, `--archive` and
-`--tiles` paths) and the exact command that ingests again when new scans arrive. Have the person start the app from
-OFFICE.md and search an address, with no help from you. Done when they do.
+Ask whether other computers in the office will use the app. If so, start it with `--host 0.0.0.0`, have the person
+allow Python through the firewall on private networks when Windows asks, and open the address it prints from a second
+computer. Offer to make it start when the computer starts, and to make a desktop shortcut.
+Write into OFFICE.md the exact command that starts the app on this computer (with its `--host`, `--index`,
+`--archive` and `--tiles` paths), the office address, and the exact command that ingests again when new scans arrive.
+Have the person start the app from OFFICE.md and search an address, with no help from you. Done when they do.

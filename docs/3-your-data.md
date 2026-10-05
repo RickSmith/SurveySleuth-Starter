@@ -1,58 +1,70 @@
 # 3. Get your data ready
 
-Gather two things before the wizard starts: a sample of your scans, and your county's data. The last section lists
-what in the code was built for Galveston County. You can skip it; your agent reads it.
+<div class="do" markdown="1">
+This page is yours, whichever option you took. Gather two things before the wizard needs them: a sample of your
+scans, and your county's parcel data. The last section is for your agent.
+</div>
 
 ## Your scans
 
 What the code reads:
 
 - **PDF files, one per Record.** A Record is one document; a Job is one piece of work with a number, and a Job can have
-  several Records (`CONTEXT.md` defines both). The county's recorded plats can be TIF files.
+  several Records. The county's recorded plats can be TIF files.
 - **The Job number in the file name**, like `11-0527.pdf`. The Galveston firm's numbers are two digits, a dash, four
   digits. A second Record of the same Job can be `11-0527 EC.pdf`: the number is what matters.
 - **Folders by kind.** The firm had one folder of elevation certificates and letters, one folder of surveys, and folders
-  of the county's recorded plats. The folder names are written in the code; your agent changes them to yours.
+  of the county's recorded plats. Your folder names will differ. Your agent changes the code to match.
 - **Kinds of Record it knows:** Survey, Elevation Certificate, Natural Ground Letter, Metes-and-Bounds Description,
-  Floor Plan. Other kinds are read and listed too, with fewer Facts.
-- **Typed or scanned:** a typed Elevation Certificate is read from its text. Everything else is looked at by the vision model.
+  Floor Plan. Other kinds are read and listed too, with fewer details.
+- **Typed or scanned:** a typed Elevation Certificate is read from its text. Everything else is looked at by the reader.
 
-Two rules:
-
-- **The archive stays where it is.** The code only reads it. It never writes there, and neither does your agent.
-- **Keep your backup anyway.**
+<div class="warn" markdown="1">
+**The archive stays where it is.** The code only reads it. It never writes there, and neither does your agent.
+A network drive is fine; [page 5](5-every-day.md#your-scans-on-a-network-drive) says how. Keep your backup anyway.
+</div>
 
 ### Make a sample
 
-A new folder `C:\SurveySleuth\Data`. Inside it, the same folder names as your archive. Copy about 30 Records in: some of
-each kind, some old, some new, and a few at addresses you know well (which lot, which neighbours). The wizard starts on
-the sample, so each try takes minutes instead of hours. The whole archive comes at the end.
+<div class="do" markdown="1">
+Make a new folder `C:\SurveySleuth\Data`. Inside it, the same folder names as your archive. Copy about 30 Records in:
+some of each kind, some old, some new, and a few at addresses you know well (which lot, which neighbours).
+</div>
+
+The wizard starts on the sample, so each try takes minutes instead of hours. The whole archive comes at the end.
 
 ## Your county's data
 
-1. **Parcels.** A shapefile download from your appraisal district or county GIS site. Search for
+<div class="do" markdown="1">
+1. **Parcels.** Download the parcel shapefile from your appraisal district or county GIS site. Search for
    "your county appraisal district GIS data" or "your county parcels shapefile". It is a zip holding `.shp`, `.dbf`
-   and `.prj` files. It needs, for every parcel: the Parcel ID, the situs (street) address, the legal description and
-   the acres. Save it as `C:\SurveySleuth\parcels.zip`. If the site offers a choice of coordinate system, take
+   and `.prj` files, with the Parcel ID, the situs (street) address, the legal description and the acres for every
+   parcel. Save it as `C:\SurveySleuth\parcels.zip`. If the site offers a choice of coordinate system, take
    **WGS 84, latitude and longitude**: it saves your agent a step.
 2. **Your Parcel ID form.** An example from the appraisal district site, and what your Records call it. The Galveston
    firm's Records print it as "File No.".
 3. **Your county's FEMA FIRM prefix.** Open any FIRM panel for your county at https://msc.fema.gov. Its number starts
    with six characters, like `48167C` for Galveston County, Texas. Yours is different.
-4. **Benchmarks.** Nothing to download. NGS publishes them, and ingestion fetches the county's.
+</div>
+
+Benchmarks need nothing: NGS publishes them, and ingestion fetches the county's.
 
 ## The test set
 
-Up to twelve addresses you know the answers for. Your agent writes them into `testset/test-set.json`; you supply the
-knowledge. For each address:
+Up to twelve addresses you know the answers for. Your agent writes them into a file; you supply the knowledge. The
+check then proves the setup, and proves it again after every change.
+
+<div class="do" markdown="1">
+For each address, be ready to say:
 
 - the address, and the Jobs you know lie within half a mile of it, the ones you expect to see;
 - Jobs that may or may not show (either way), if any;
 - traps, if any: a Job that must be listed for a reason you give, or one that must not be;
 - and one or two addresses where you did no Jobs. For those, the flood zone, the BFE, the FIRM panel and the Parcel ID,
   so the check can verify the public data too.
+</div>
 
-The file's shape, for your agent:
+The file's shape, for your agent (`testset/test-set.json`):
 
 ```json
 {"addresses": [
@@ -70,10 +82,10 @@ The file's shape, for your agent:
 
 `kind` is `must be listed` or `must not be listed`. `python -m surveysleuth.check` runs every address and prints pass or fail.
 
-## What was built for Galveston County
+## For your agent: what was built for Galveston County
 
-Each row is a value in the code that is true for Galveston County, Texas and for the firm's archive. Your agent changes
-each one in step 5 of the wizard.
+Each row is a value in the code that is true for Galveston County, Texas and for the firm's archive. The agent changes
+each one in step 5 of the wizard. You can skip this table.
 
 | File | Name | What it is |
 |---|---|---|
@@ -95,4 +107,4 @@ each one in step 5 of the wizard.
 
 The file name `galveston.pmtiles` is only a file name. It can stay.
 
-Next: [Hand it to your agent](4-hand-it-to-your-agent.md).
+<p class="next"><a href="4-hand-it-to-your-agent.md">Next: Hand it to your agent</a></p>

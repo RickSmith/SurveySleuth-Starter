@@ -1,45 +1,55 @@
 # 1. Set up your computer
 
-Six programs go on your computer. There are two ways to get them there: let the agent do it, or do it yourself.
+Six programs go on your computer. Pick one of the two options.
 
-## The short way: the agent installs them
+## Option 1: let the agent do it
 
 Only two things need you: installing the agent, and clicking the pop-ups.
 
-1. Install the Claude desktop app from https://claude.ai/download and sign in. It needs a Claude Pro or Max
+<div class="do" markdown="1">
+1. Install the **Claude desktop app** from https://claude.ai/download and sign in. It needs a Claude Pro or Max
    subscription (https://claude.com/pricing). The free plan does not include the Code tab.
-2. Make an empty folder named `C:\SurveySleuth` (in File Explorer: right-click, New, Folder). On a Mac, `SurveySleuth`
-   in your home folder.
+2. Make an empty folder named `C:\SurveySleuth`. In File Explorer: right-click, New, Folder. On a Mac, a folder named
+   `SurveySleuth` in your home folder.
 3. In the app, click **Code**, then **Select folder**, and pick that folder.
-4. Paste this line and press Enter:
+4. Paste this line into the box and press Enter:
+</div>
 
+<div class="paste" markdown="1">
 ```
 Read https://raw.githubusercontent.com/RickSmith/SurveySleuth-Starter/main/docs/1-setup.md and install everything on it that this computer is missing. Then copy the code into this folder with: git clone https://github.com/RickSmith/SurveySleuth-Starter.git . Then read docs/wizard.md and follow it.
 ```
+</div>
 
-The agent asks before each command: say yes. When Windows shows a pop-up asking for permission, click Yes. The model
-download is 23 GB; let it run. If the app stops, or you close it, open the folder again and paste the same line. It
-skips what is already done.
+<div class="agent" markdown="1">
+It asks you which reader you want (see [Which graphics card](#which-graphics-card) and [Or a cloud model instead](#or-a-cloud-model-instead)
+below). Then it installs Git, Python, Poppler and, for the in-house reader, Ollama and the model. Then it copies the code
+and starts the wizard. It asks before each command: say yes.
+</div>
 
-Before you paste, read [Which graphics card](#which-graphics-card) and [Or a cloud model instead](#or-a-cloud-model-instead)
-below: the agent asks you which way you want at its first step.
+<div class="tip" markdown="1">
+When Windows shows a pop-up asking for permission, click Yes. The model download is 23 GB; let it run. If the app
+stops, or you close it, open the folder again and paste the same line. It skips what is already done.
+</div>
 
-That is pages 1, 2 and 4 of this walkthrough in one go. Page 3, your data, still needs you.
+That is pages 1, 2 and 4 of this walkthrough in one go. [Page 3, your data](3-your-data.md), still needs you.
 
-## The long way: you install them
+## Option 2: step by step
 
-Each program has a check, so you know it worked. Do them in order. The Windows steps come first; the Mac steps are
-near the end of the page.
+Each program has a check, so you know it worked. Do them in order. Windows first; the Mac steps are near the end.
 
 ### Before you start
 
-- **The terminal.** Press the Windows key, type `Terminal`, and open Windows Terminal. It shows a line that ends in `>`
-  and waits for you to type. That is where you paste the commands on this page. To paste, right-click in the window.
-  Press Enter to run the line.
-- **After each install, open a new terminal.** Close the terminal window and open it again. A new terminal knows about
-  the new program. The old one does not, and its check will fail.
-- **Pop-ups.** Some installs open a window that asks for permission. Click Yes.
-- **Time.** The programs are quick. The vision model is a 23 GB download, so start it and do something else.
+<div class="tip" markdown="1">
+**The terminal** is where you paste commands. Press the Windows key, type `Terminal`, and open Windows Terminal. It
+shows a line that ends in `>` and waits for you. To paste, right-click in the window. Press Enter to run the line.
+Every code box on this page has a Copy button.
+
+**After each install, open a new terminal.** A new terminal knows about the new program. The old one does not, and its
+check will fail.
+
+**Pop-ups** that ask for permission: click Yes.
+</div>
 
 ### Git
 
@@ -55,7 +65,9 @@ New terminal. Check:
 git --version
 ```
 
-You should see `git version 2.` followed by more numbers.
+<div class="check" markdown="1">
+`git version 2.` followed by more numbers.
+</div>
 
 ### Python 3.11
 
@@ -72,14 +84,13 @@ New terminal. Check:
 py -3.11 --version
 ```
 
-You should see `Python 3.11.` followed by a number. Now also try:
+<div class="check" markdown="1">
+`Python 3.11.` followed by a number.
+</div>
 
-```
-python --version
-```
-
-If this also says 3.11, use `python`, as this guide does. If it says another version, or opens the Microsoft Store,
-type `py -3.11` wherever this guide says `python`. Tell your agent which one works on your computer; it will use that one.
+Now also try `python --version`. If it also says 3.11, use `python`, as this guide does. If it says another version,
+or opens the Microsoft Store, type `py -3.11` wherever this guide says `python`. Tell your agent which one works; it
+will use that one.
 
 Then install Pillow, the one add-on the scan reader needs:
 
@@ -87,11 +98,13 @@ Then install Pillow, the one add-on the scan reader needs:
 python -m pip install pillow
 ```
 
-The last line says `Successfully installed` or `Requirement already satisfied`. Either is good.
+<div class="check" markdown="1">
+A last line that says `Successfully installed` or `Requirement already satisfied`. Either is good.
+</div>
 
 ### Poppler
 
-Poppler turns a page of a PDF into a picture, so the vision model can look at it.
+Poppler turns a page of a PDF into a picture, so the reader can look at it.
 
 ```
 winget install --id oschwartz10612.Poppler -e --source winget
@@ -103,7 +116,9 @@ New terminal. Check:
 pdftoppm -v
 ```
 
-You should see `pdftoppm version` followed by a number.
+<div class="check" markdown="1">
+`pdftoppm version` followed by a number.
+</div>
 
 ### Ollama and the vision model
 
@@ -127,30 +142,44 @@ Wait for it to finish. Check:
 ollama list
 ```
 
-You should see `qwen3.6:35b` in the list.
+<div class="check" markdown="1">
+`qwen3.6:35b` in the list.
+</div>
 
 ### Which graphics card
 
 The model is 23 GB. It runs fastest when the whole model sits in the graphics card's memory.
 
-- **Built and tested on an NVIDIA GeForce RTX 5090**, which has 32 GB of card memory. That is the recommendation.
-- A card with 24 GB (RTX 3090, RTX 4090) holds most of it. The rest goes to normal memory, and it runs slower.
-- A smaller card, or none: it runs on the processor, and a scan takes minutes instead of seconds. Then consider a cloud
-  model instead, below.
-- A Mac with Apple silicon: 32 GB of memory or more. The card and the processor share it.
+<div class="cards" markdown="1">
+<div class="card pick" markdown="1">
+**NVIDIA GeForce RTX 5090**, 32 GB of card memory. The code was built and tested on it. This is the recommendation.
+</div>
+<div class="card" markdown="1">
+**A 24 GB card** (RTX 3090, RTX 4090) holds most of the model. The rest goes to normal memory, and it runs slower.
+</div>
+<div class="card" markdown="1">
+**A smaller card, or none.** It runs on the processor, and a scan takes minutes instead of seconds. Consider the
+cloud model instead.
+</div>
+<div class="card" markdown="1">
+**A Mac with Apple silicon.** 32 GB of memory or more. The card and the processor share it.
+</div>
+</div>
 
 If the model does not fit, Ollama says so when the first scan is read, and your agent will tell you.
 
 ### Or a cloud model instead
 
 If you do not have the card, or do not want to run a model yourself, a cloud model can read the scans instead:
-OpenAI (the models behind ChatGPT), Google (Gemini), xAI (Grok) or Anthropic (Claude). Know what that means:
+OpenAI (the models behind ChatGPT), Google (Gemini), xAI (Grok) or Anthropic (Claude).
 
+<div class="warn" markdown="1">
 - Every page of every scan is sent to that company. The Ollama way keeps everything in the office.
 - You need an account with that company and an API key, a password that programs use, and you pay per page read.
   Set a spending limit in that account first.
 - The code is built and tested with the Ollama model. Your agent adds the cloud call in the wizard. The test set
   (page 3) then shows how well that model reads your scans.
+</div>
 
 To choose this: skip Ollama, and tell the wizard at its first step.
 
@@ -160,8 +189,6 @@ Claude Code is the AI agent that sets up SurveySleuth with you. It runs in the t
 can read files, change code and run commands, and it asks you before it does.
 
 It needs a Claude Pro or Max subscription. The free plan does not include it. See https://claude.com/pricing.
-
-Install, in the terminal:
 
 ```
 irm https://claude.ai/install.ps1 | iex
@@ -173,14 +200,16 @@ New terminal. Check:
 claude --version
 ```
 
-Sign in: type `claude` and press Enter. A browser window opens; log in there and come back to the terminal. Type
-`/exit` to leave Claude Code for now.
+<div class="check" markdown="1">
+A version number. Then type `claude` and press Enter: a browser window opens, you log in there, and come back.
+Type `/exit` to leave Claude Code for now.
+</div>
 
+<div class="tip" markdown="1">
 Prefer a window to a terminal? The Claude desktop app has a **Code** tab that does the same job: https://claude.ai/download.
-Install it, sign in, and click Code. Page 4 shows both ways.
-
-Other agents work with the wizard prompt too, as long as they can run commands in a folder: OpenAI Codex, Google's
-Gemini CLI, Cursor. This walkthrough shows Claude.
+Install it, sign in, and click Code. Other agents work with the wizard prompt too, as long as they can run commands
+in a folder: OpenAI Codex, Google's Gemini CLI, Cursor. This walkthrough shows Claude.
+</div>
 
 ### Optional: a GitHub account and the GitHub CLI
 
@@ -221,8 +250,7 @@ Use `python3.11` wherever this guide says `python`.
 
 ### The final check
 
-Open a new terminal and run each line. Every one should print a version, and `ollama list` should show the model
-(skip that one if you chose a cloud model):
+Open a new terminal and run each line.
 
 ```
 git --version
@@ -233,4 +261,8 @@ ollama list
 claude --version
 ```
 
-Next: [Get the code](2-get-the-code.md).
+<div class="check" markdown="1">
+A version from every line, and `qwen3.6:35b` in the Ollama list (skip that one if you chose a cloud model).
+</div>
+
+<p class="next"><a href="2-get-the-code.md">Next: Get the code</a></p>

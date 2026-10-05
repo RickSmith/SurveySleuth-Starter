@@ -1,7 +1,7 @@
 """The search app: a Python standard-library web server and one page (layout B, "Briefing first").
 
     python -m surveysleuth.app [--index index] [--archive Data] [--testset testset/test-set.json] [--tiles tiles]
-                               [--live-map] [--port 8765]
+                               [--live-map] [--port 8765] [--host 127.0.0.1]
 
 Reads only the index folder, plus the test addresses from the local test set file when it is there. Serves the page
 images drawn at ingestion and the original PDFs (the Legacy archive folder) for the Record viewer.
@@ -12,6 +12,7 @@ Needs Python only: no pip installs, no Poppler.
 """
 import argparse
 import json
+import platform
 import re
 import sys
 from functools import partial
@@ -156,6 +157,7 @@ def main():
     ap.add_argument("--tiles", default="tiles", type=Path, help="the map tiles folder, from python -m surveysleuth.tiles")
     ap.add_argument("--live-map", action="store_true", help="show live map tiles from the internet, not the tiles folder")
     ap.add_argument("--port", default=8765, type=int)
+    ap.add_argument("--host", default="127.0.0.1", help="0.0.0.0 serves the whole office network, not only this computer")
     args = ap.parse_args()
     index = load_index(args.index)
     addresses = test_addresses(args.testset)
@@ -204,13 +206,14 @@ def main():
                 return self.send(200, (STATIC / name).read_bytes(), TYPES[Path(name).suffix])
             self.send(404, {"error": "Not found."})
 
-    server = ThreadingHTTPServer(("127.0.0.1", args.port), Handler)
+    server = ThreadingHTTPServer((args.host, args.port), Handler)
     print(f"SurveySleuth: {index['counts']['records']} Records, {len(addresses)} test addresses.")
     if args.live_map:
         print("Map: live tiles from the internet.")
     else:
         print(f"Map: offline tiles from {args.tiles}{'' if map_setup['aerial'] else ' (streets only: no aerial tiles)'}.")
-    print(f"Open http://127.0.0.1:{args.port}/  (Ctrl+C to stop)")
+    where = f"http://{platform.node()}:{args.port}/ from any computer in the office" if args.host == "0.0.0.0" else f"http://127.0.0.1:{args.port}/"
+    print(f"Open {where}  (Ctrl+C to stop)")
     server.serve_forever()
 
 

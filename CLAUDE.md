@@ -16,4 +16,4 @@ Setting up for an office, or continuing a setup: `/setup`, or read `docs/wizard.
 
 ## Run it
 
-`README.md` (the Reference section) lists every command. `python -m unittest` passes before every commit.
+`docs/reference.md` lists every command and how ingestion works. `python -m unittest` passes before every commit.
