@@ -89,8 +89,9 @@ you, one step at a time, so you never have to.
 - **A computer** running Windows 11 or macOS, on all day if the office will use it.
 - **Your scans** as PDF files in folders, on the computer or a network drive. [Page 3](3-your-data.md) says what the code expects.
 - **Your county's parcel data**, a free download from your appraisal district or county GIS site. Same page.
-- **The reader.** On your computer, it needs a big graphics card: the code was built on an NVIDIA GeForce RTX 5090
-  with 32 GB of card memory. [Page 1](1-setup.md#which-graphics-card) says what else works, and about the cloud option.
+- **The reader.** On your computer, it needs a big graphics card: 32 GB for the model the code was built with (an
+  NVIDIA GeForce RTX 5090), or 24 GB for a smaller one. [Page 1](1-setup.md#which-graphics-card) has the ladder, and
+  the cloud option.
 - **An AI agent.** The walkthrough uses Claude Code, which comes with a Claude Pro or Max subscription. Other agents
   that can run commands in a folder, such as OpenAI Codex, Gemini CLI or Cursor, can follow the same wizard prompt.
 - **Internet** for the setup and the county data. After that the app works offline.

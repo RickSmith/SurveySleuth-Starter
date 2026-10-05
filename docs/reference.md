@@ -20,6 +20,7 @@ The search app needs Python only. It finds a typed address in the saved GCAD dat
 ```sh
 python -m surveysleuth.ingest Data index --parcels parcels.zip --overrides overrides.json
                                              # Legacy archive folder -> index folder (a few minutes)
+                                             # --model qwen3.6:27b: the smaller model (a 24 GB card); answers are kept per model
 python -m surveysleuth.tiles --aerial        # offline map tiles -> tiles/ (streets: seconds; aerial: hours, run again to resume)
 python -m surveysleuth.app                   # reads index/, Data/ (for Open PDF), testset/test-set.json and tiles/; open http://127.0.0.1:8765/
 python -m surveysleuth.app --host 0.0.0.0    # the same, reachable from every computer on the office network

@@ -25,9 +25,15 @@ First ask: will the scans be read on this computer, by the Ollama model (the tes
 `docs/1-setup.md` describes), or by a cloud model (OpenAI, Google, xAI or Anthropic: the person has an account and an
 API key there, and every scan page goes to that company)? Write the answer, the reader, into OFFICE.md.
 
+For the Ollama reader, read the graphics card's memory (`nvidia-smi --query-gpu=name,memory.total --format=csv` on
+Windows; on a Mac, the memory in `system_profiler SPHardwareDataType`) and pick the model by the ladder in
+`docs/1-setup.md`, "Which graphics card": 32 GB or more, `qwen3.6:35b`; 24 GB, `qwen3.6:27b`; less, suggest the
+cloud reader. Write the model into OFFICE.md. Every ingest command from here on carries `--model` with that name
+unless it is `qwen3.6:35b`, the default.
+
 Then run each check and show the person the result: `git --version`; `python --version` (3.11; on Windows, when
 `python` is not 3.11, `py -3.11 --version`, then use `py -3.11` in every command and note that in OFFICE.md);
-`python -m pip show pillow`; `pdftoppm -v`; and, for the Ollama reader, `ollama list` (shows `qwen3.6:35b`).
+`python -m pip show pillow`; `pdftoppm -v`; and, for the Ollama reader, `ollama list` (shows the chosen model; `ollama pull` it when it is missing).
 
 Install what is missing yourself, with that program's command from `docs/1-setup.md` (winget on Windows, Homebrew on a
 Mac); the person clicks the permission pop-ups. A program not found right after its install: use its full path until
