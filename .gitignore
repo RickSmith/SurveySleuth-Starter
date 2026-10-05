@@ -1,0 +1,27 @@
+# Raw data: keep out of git (too big)
+*.zip
+Data/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local Claude settings
+.claude/settings.local.json
+
+# Firm data made from the archive: the index and the local test set
+index/
+testset/
+overrides.json
+
+# Map tiles and the pmtiles tool, from python -m surveysleuth.tiles (OpenStreetMap and USGS data: built, not committed)
+tiles/
