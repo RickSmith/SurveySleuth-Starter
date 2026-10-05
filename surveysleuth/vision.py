@@ -28,6 +28,13 @@ OLLAMA = "http://localhost:11434/api/chat"
 READ_BY = f"vision model ({MODEL})"
 
 
+def use_model(name):
+    """The Ollama model that reads the pages from now on (ingestion's --model). Saved answers are keyed by it, so a
+    different model re-reads every Record and keeps the other model's answers."""
+    global MODEL, READ_BY
+    MODEL, READ_BY = name, f"vision model ({name})"
+
+
 def run(tool, *args):
     """A Poppler tool's output. Git for Windows puts xpdf's pdftotext first on PATH; use the folder of pdftoppm."""
     poppler = shutil.which("pdftoppm")

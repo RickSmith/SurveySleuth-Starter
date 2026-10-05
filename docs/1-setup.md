@@ -130,7 +130,8 @@ winget install --id Ollama.Ollama -e --source winget
 ```
 
 Ollama starts and sits in the corner of the taskbar, as a llama icon. It must be running whenever the scans are read.
-New terminal. Now download the model. It is 23 GB:
+New terminal. Now download the model. It is 23 GB (a 24 GB card: `ollama pull qwen3.6:27b` instead, 17 GB; see
+[Which graphics card](#which-graphics-card)):
 
 ```
 ollama pull qwen3.6:35b
@@ -152,21 +153,32 @@ The model is 23 GB. It runs fastest when the whole model sits in the graphics ca
 
 <div class="cards" markdown="1">
 <div class="card pick" markdown="1">
-**NVIDIA GeForce RTX 5090**, 32 GB of card memory. The code was built and tested on it. This is the recommendation.
+**32 GB of card memory or more** (NVIDIA GeForce RTX 5090): `qwen3.6:35b`, the model the code was built and tested
+with. This is the recommendation.
 </div>
 <div class="card" markdown="1">
-**A 24 GB card** (RTX 3090, RTX 4090) holds most of the model. The rest goes to normal memory, and it runs slower.
+**24 GB** (RTX 3090, RTX 4090): `qwen3.6:27b`, 17 GB. It fits whole on the card. It reads a little less well; see below.
 </div>
 <div class="card" markdown="1">
-**A smaller card, or none.** It runs on the processor, and a scan takes minutes instead of seconds. Consider the
-cloud model instead.
+**Less than 24 GB, or no card.** The models run on the processor, and a scan takes minutes instead of seconds.
+Consider the cloud model instead.
 </div>
 <div class="card" markdown="1">
-**A Mac with Apple silicon.** 32 GB of memory or more. The card and the processor share it.
+**A Mac with Apple silicon.** 32 GB of memory or more for 35b, 24 GB for 27b. The card and the processor share it.
 </div>
 </div>
 
-If the model does not fit, Ollama says so when the first scan is read, and your agent will tell you.
+To use the smaller model, pull it instead (`ollama pull qwen3.6:27b`) and tell the wizard. Reading then runs with
+`--model qwen3.6:27b`. You can change models later: each model's answers are kept apart, and the test set shows the
+difference. If a model does not fit, Ollama says so when the first scan is read, and your agent will tell you.
+
+<div class="warn" markdown="1">
+**How much do you lose with 27b?** We re-read 65 real Records with both models. On the fields that place a Record on
+the map they agree almost always: Parcel ID 100%, Job number 97%, street 97%, date 100%, flood zone, BFE and FIRM
+panel 100%. They differ more on details: the lots and block a survey names (often only in wording, "Lot 7" against
+"7"), the lot count on a recorded plat (half differ), the buildings drawn on a survey, and a certificate's FIRM panel
+date. Over every field, 86% agree. 35b stays the recommendation; 27b is a fair second.
+</div>
 
 ### Or a cloud model instead
 

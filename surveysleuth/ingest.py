@@ -1,6 +1,7 @@
 """Ingestion: turn a Legacy archive folder into an index folder.
 
     python -m surveysleuth.ingest ARCHIVE_FOLDER INDEX_FOLDER --parcels parcels.zip [--overrides overrides.json]
+                                  [--model qwen3.6:35b]
 
 Reads only the certificate folder (EL_GAL_Data), the Survey folder (SUR_GAL_Data) and plat group folders (named like
 "Galveston County Plats Group 1"); a file in any other folder, or at the top of the archive folder, is skipped unread
@@ -31,8 +32,8 @@ from surveysleuth.archive import CERTIFICATE, SURVEY, build_index, pages_dir
 from surveysleuth.gcad import read_parcels
 from surveysleuth.plats import PLAT_READING, PlatAreas, draw_plat, recorded_plats
 from surveysleuth.sources import census_geocoder, fetch_fema, fetch_ngs
-from surveysleuth.vision import (CERTIFICATE_READING, DRAWING_READING, SURVEY_READING, Answers, certificate_record,
-                                 draw_pages, drawing_facts, render, run, survey_record)
+from surveysleuth.vision import (CERTIFICATE_READING, DRAWING_READING, MODEL, SURVEY_READING, Answers, certificate_record,
+                                 draw_pages, drawing_facts, render, run, survey_record, use_model)
 
 TEXT = "text layer"
 SURVEY_FOLDER = "SUR_GAL_Data"  # ponytail: this Firm's folders; make them an option when a second Firm comes
@@ -324,5 +325,7 @@ if __name__ == "__main__":
     ap.add_argument("index", help="the index folder to write (outside the archive and outside git)")
     ap.add_argument("--parcels", required=True, help="the GCAD 'Parcels with data' shapefile zip")
     ap.add_argument("--overrides", help="the overrides file: Records placed by hand")
+    ap.add_argument("--model", default=MODEL, help=f"the Ollama vision model (default {MODEL}; a 24 GB card can use qwen3.6:27b)")
     a = ap.parse_args()
+    use_model(a.model)
     main(a.archive, a.index, a.parcels, a.overrides)

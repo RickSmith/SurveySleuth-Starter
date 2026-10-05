@@ -140,6 +140,7 @@ Run them in the project folder (`cd C:\SurveySleuth`). Replace `\\server\Scans` 
 | Read the sample | `python -m surveysleuth.ingest Data index --parcels parcels.zip` |
 | Read the whole archive, or new scans | `python -m surveysleuth.ingest "\\server\Scans" index --parcels parcels.zip` |
 | Read with Records placed by hand | add `--overrides overrides.json` to the line above |
+| Read with the smaller model (24 GB card) | add `--model qwen3.6:27b` to a reading line |
 | Build the offline map | `python -m surveysleuth.tiles --aerial` |
 | Run the check | `python -m surveysleuth.check` |
 | Run the tests | `python -m unittest` |
