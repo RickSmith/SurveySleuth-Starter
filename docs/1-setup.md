@@ -173,11 +173,11 @@ To use the smaller model, pull it instead (`ollama pull qwen3.6:27b`) and tell t
 difference. If a model does not fit, Ollama says so when the first scan is read, and your agent will tell you.
 
 <div class="warn" markdown="1">
-**How much do you lose with 27b?** We re-read 65 real Records with both models. On the fields that place a Record on
-the map they agree almost always: Parcel ID 100%, Job number 97%, street 97%, date 100%, flood zone, BFE and FIRM
-panel 100%. They differ more on details: the lots and block a survey names (often only in wording, "Lot 7" against
-"7"), the lot count on a recorded plat (half differ), the buildings drawn on a survey, and a certificate's FIRM panel
-date. Over every field, 86% agree. 35b stays the recommendation; 27b is a fair second.
+**How much do you lose with 27b?** We re-read 65 real Records with both models and compared what each put in the
+index. On the facts that place a Record on the map they agree almost always: Parcel ID 100%, Job number 97%, date
+100%, flood zone, BFE and the lot and block on a certificate 100%. They differ more on details: the lot and block a
+survey names (72% agree), the buildings drawn on a survey (77%), the lot count on a recorded plat (half differ), and a
+certificate's FIRM panel (55%). Over every fact, 91% agree. 35b stays the recommendation; 27b is a fair second.
 </div>
 
 ### Or a cloud model instead
