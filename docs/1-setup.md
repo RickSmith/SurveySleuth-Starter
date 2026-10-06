@@ -277,4 +277,4 @@ claude --version
 A version from every line, and `qwen3.6:35b` in the Ollama list (skip that one if you chose a cloud model).
 </div>
 
-<p class="next"><a href="2-get-the-code.md">Next: Get the code</a></p>
+<p class="next" markdown="1">[Next: Get the code](2-get-the-code.md)</p>

@@ -107,4 +107,4 @@ each one in step 5 of the wizard. You can skip this table.
 
 The file name `galveston.pmtiles` is only a file name. It can stay.
 
-<p class="next"><a href="4-hand-it-to-your-agent.md">Next: Hand it to your agent</a></p>
+<p class="next" markdown="1">[Next: Hand it to your agent](4-hand-it-to-your-agent.md)</p>

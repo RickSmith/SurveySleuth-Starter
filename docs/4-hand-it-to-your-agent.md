@@ -54,4 +54,4 @@ With another agent, paste this instead: `Read docs/wizard.md and follow it.`
 - **"I do not know" is a fine answer.** It finds out, or asks another way.
 - **Look at what it shows you.** A count, a map, a list. You know your archive; it does not. Tell it when something is wrong.
 
-<p class="next"><a href="5-every-day.md">Next: Every day</a></p>
+<p class="next" markdown="1">[Next: Every day](5-every-day.md)</p>

@@ -59,4 +59,4 @@ These appear later, and never go to GitHub: `Data/` (your sample scans), `index/
 `tiles/` (the offline map), `testset/` (your test addresses), `parcels.zip` (your county's parcels) and `OFFICE.md`
 (the agent's notes about your office).
 
-<p class="next"><a href="3-your-data.md">Next: Get your data ready</a></p>
+<p class="next" markdown="1">[Next: Get your data ready](3-your-data.md)</p>
