@@ -2,6 +2,16 @@
 
 <p class="lead">Type an address. See every job your office ever did near it, on a map, with a short briefing. Built from the scans you already have.</p>
 
+<div class="card pick" markdown="1">
+### At TSPS 2026? Here are the slides.
+
+SurveySleuth was one of three examples in *Beyond the Prompt: Getting Started with Agentic AI for Geomatics
+Workflows*, presented at the TSPS 2026 Convention by Rick Smith and Seneca Holland of the Conrad Blucher Institute for
+Surveying and Science.
+
+[Download the presentation (PDF)](assets/tsps-2026-beyond-the-prompt.pdf){: .btn}
+</div>
+
 <svg class="flow" viewBox="0 0 880 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Your scans go to a reader, then onto a map, then you search by address">
   <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#9aa4b2"/></marker></defs>
   <g font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" text-anchor="middle">
