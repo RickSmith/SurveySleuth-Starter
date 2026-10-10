@@ -39,6 +39,11 @@ NVIDIA GeForce RTX 5090. The walkthrough has the details.
 The code was built for one surveying firm in Galveston County, Texas. The walkthrough lists everything that is local
 to that county, and the wizard changes it for your county with you.
 
+## The talk
+
+SurveySleuth was presented at the TSPS 2026 Convention, as part of *Beyond the Prompt: Getting Started with Agentic AI
+for Geomatics Workflows*. The slides: [docs/assets/tsps-2026-beyond-the-prompt.pdf](docs/assets/tsps-2026-beyond-the-prompt.pdf).
+
 ## License
 
 You may use this software inside your own company and change it for your company's use. You may not distribute it,
